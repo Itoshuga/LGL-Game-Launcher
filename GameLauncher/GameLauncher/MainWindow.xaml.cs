@@ -3,7 +3,8 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
-using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -28,6 +29,7 @@ namespace GameLauncher
         private string gameExe;
 
         private LauncherStatus _status;
+
         internal LauncherStatus Status
         {
             get => _status;
@@ -55,6 +57,7 @@ namespace GameLauncher
         }
 
         private ProgressBar downloadProgressBar;
+        private HttpClient httpClient;
 
         public MainWindow()
         {
@@ -66,9 +69,10 @@ namespace GameLauncher
             gameExe = Path.Combine(rootPath, "Build", "Card game.exe");
 
             downloadProgressBar = DownloadProgressBar;
+            httpClient = new HttpClient();
         }
 
-        private void CheckForUpdates()
+        private async Task CheckForUpdates()
         {
             if (File.Exists(versionFile))
             {
@@ -77,12 +81,11 @@ namespace GameLauncher
 
                 try
                 {
-                    WebClient webClient = new WebClient();
-                    Version onlineVersion = new Version(webClient.DownloadString("https://www.dropbox.com/s/e6642vrr19p0ht1/Version.txt?dl=1"));
+                    Version onlineVersion = new Version(await httpClient.GetStringAsync("https://www.dropbox.com/s/e6642vrr19p0ht1/Version.txt?dl=1"));
 
                     if (onlineVersion.IsDifferentThan(localVersion))
                     {
-                        InstallGameFiles(true, onlineVersion);
+                        await InstallGameFilesAsync(true, onlineVersion);
                     }
                     else
                     {
@@ -97,32 +100,31 @@ namespace GameLauncher
             }
             else
             {
-                InstallGameFiles(false, Version.zero);
+                await InstallGameFilesAsync(false, Version.zero);
             }
         }
 
-        private void InstallGameFiles(bool _isUpdate, Version _onlineVersion)
+        private async Task InstallGameFilesAsync(bool isUpdate, Version onlineVersion)
         {
             try
             {
-                WebClient webClient = new WebClient();
-                if (_isUpdate)
+                if (isUpdate)
                 {
                     Status = LauncherStatus.downloadingUpdate;
                 }
                 else
                 {
                     Status = LauncherStatus.downloadingGame;
-                    _onlineVersion = new Version(webClient.DownloadString("https://www.dropbox.com/s/e6642vrr19p0ht1/Version.txt?dl=1"));
+                    onlineVersion = new Version(await httpClient.GetStringAsync("https://www.dropbox.com/s/e6642vrr19p0ht1/Version.txt?dl=1"));
                 }
 
-                webClient.DownloadProgressChanged += DownloadProgressChangedCallback;
-                webClient.DownloadFileCompleted += DownloadGameCompletedCallback;
+                var progress = new Progress<int>(ReportProgress);
+                var downloadTask = DownloadFileAsync(new Uri("https://www.dropbox.com/s/043eoko3pir262m/Build.zip?dl=1"), gameZip, onlineVersion, progress);
 
                 // Afficher la barre de progression
                 downloadProgressBar.Visibility = Visibility.Visible;
 
-                webClient.DownloadFileAsync(new Uri("https://www.dropbox.com/s/043eoko3pir262m/Build.zip?dl=1"), gameZip, _onlineVersion);
+                await downloadTask;
             }
             catch (Exception ex)
             {
@@ -131,35 +133,53 @@ namespace GameLauncher
             }
         }
 
-        private void DownloadProgressChangedCallback(object sender, DownloadProgressChangedEventArgs e)
+        private async Task DownloadFileAsync(Uri uri, string filePath, Version onlineVersion, IProgress<int> progress)
         {
-            // Mettre à jour la valeur de la barre de progression en fonction du pourcentage de progression
-            downloadProgressBar.Value = e.ProgressPercentage;
-        }
-
-        private void DownloadGameCompletedCallback(object sender, AsyncCompletedEventArgs e)
-        {
-            try
+            using (var response = await httpClient.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead))
             {
-                string onlineVersion = ((Version)e.UserState).ToString();
-                ZipFile.ExtractToDirectory(gameZip, rootPath);
-                File.Delete(gameZip);
+                response.EnsureSuccessStatusCode();
+                var totalBytes = response.Content.Headers.ContentLength ?? -1L;
+                var downloadedBytes = 0L;
 
-                File.WriteAllText(versionFile, onlineVersion);
+                using (var stream = await response.Content.ReadAsStreamAsync())
+                using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true))
+                {
+                    var buffer = new byte[8192];
+                    int bytesRead;
 
-                VersionText.Text = onlineVersion;
+                    while ((bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length)) > 0)
+                    {
+                        await fileStream.WriteAsync(buffer, 0, bytesRead);
+                        downloadedBytes += bytesRead;
+
+                        // Calculer le pourcentage de progression
+                        var progressPercentage = (int)(downloadedBytes * 100 / totalBytes);
+
+                        // Signaler la progression
+                        progress?.Report(progressPercentage);
+                    }
+                }
+
+                // Extraire l'archive zip
+                ZipFile.ExtractToDirectory(filePath, rootPath, true);
+                File.Delete(filePath);
+
+                File.WriteAllText(versionFile, onlineVersion.ToString());
+
+                VersionText.Text = onlineVersion.ToString();
                 Status = LauncherStatus.ready;
             }
-            catch (Exception ex)
-            {
-                Status = LauncherStatus.failed;
-                MessageBox.Show($"Error finishing download: {ex}");
-            }
         }
 
-        private void Window_ContentRendered(object sender, EventArgs e)
+        private void ReportProgress(int progressPercentage)
         {
-            CheckForUpdates();
+            // Mettre à jour la valeur de la barre de progression en fonction du pourcentage de progression
+            downloadProgressBar.Value = progressPercentage;
+        }
+
+        private async void Window_ContentRendered(object sender, EventArgs e)
+        {
+            await CheckForUpdates();
         }
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)
