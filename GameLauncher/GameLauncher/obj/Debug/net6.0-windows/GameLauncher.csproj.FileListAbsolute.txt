@@ -19,3 +19,4 @@ C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\obj\Debug\net
 C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\obj\Debug\net6.0-windows\GameLauncher.pdb
 C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\obj\Debug\net6.0-windows\GameLauncher.genruntimeconfig.cache
 C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\obj\Debug\net6.0-windows\ref\GameLauncher.dll
+C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\obj\Debug\net6.0-windows\App.baml

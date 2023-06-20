@@ -7,4 +7,24 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Images\Icones\Discord.png" />
+    <None Remove="Images\Icones\Game.png" />
+    <None Remove="Images\Icones\Home-v2.png" />
+    <None Remove="Images\Icones\Home.png" />
+    <None Remove="Images\Icones\Note.png" />
+    <None Remove="Images\Icones\SignOut.png" />
+    <None Remove="Images\LauncherBackground.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Icones\Discord.png" />
+    <Resource Include="Images\Icones\Game.png" />
+    <Resource Include="Images\Icones\Home-v2.png" />
+    <Resource Include="Images\Icones\Home.png" />
+    <Resource Include="Images\Icones\Note.png" />
+    <Resource Include="Images\Icones\SignOut.png" />
+    <Resource Include="Images\LauncherBackground.jpg" />
+  </ItemGroup>
+
 </Project>

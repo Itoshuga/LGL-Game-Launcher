@@ -39,16 +39,16 @@ namespace GameLauncher
                 switch (_status)
                 {
                     case LauncherStatus.ready:
-                        PlayButton.Content = "Play";
+                        PlayButton.Content = "JOUER";
                         break;
                     case LauncherStatus.failed:
-                        PlayButton.Content = "Update Failed - Retry";
+                        PlayButton.Content = "ECHEC";
                         break;
                     case LauncherStatus.downloadingGame:
-                        PlayButton.Content = "Downloading Game";
+                        PlayButton.Content = "TELECHARGEMENT";
                         break;
                     case LauncherStatus.downloadingUpdate:
-                        PlayButton.Content = "Downloading Update";
+                        PlayButton.Content = "MISE A JOUR";
                         break;
                     default:
                         break;
@@ -57,6 +57,7 @@ namespace GameLauncher
         }
 
         private ProgressBar downloadProgressBar;
+        private TextBlock downloadProgressText;
         private HttpClient httpClient;
 
         public MainWindow()
@@ -69,6 +70,7 @@ namespace GameLauncher
             gameExe = Path.Combine(rootPath, "Build", "Card game.exe");
 
             downloadProgressBar = DownloadProgressBar;
+            downloadProgressText = DownloadProgressText;
             httpClient = new HttpClient();
         }
 
@@ -77,7 +79,7 @@ namespace GameLauncher
             if (File.Exists(versionFile))
             {
                 Version localVersion = new Version(File.ReadAllText(versionFile));
-                VersionText.Text = localVersion.ToString();
+                VersionText.Text = "Version " + localVersion.ToString();
 
                 try
                 {
@@ -123,8 +125,13 @@ namespace GameLauncher
 
                 // Afficher la barre de progression
                 downloadProgressBar.Visibility = Visibility.Visible;
+                downloadProgressText.Visibility = Visibility.Visible;
 
                 await downloadTask;
+
+                // Rendre la barre de téléchargement invisible une fois terminé
+                downloadProgressBar.Visibility = Visibility.Collapsed;
+                downloadProgressText.Visibility = Visibility.Collapsed;
             }
             catch (Exception ex)
             {
@@ -175,6 +182,7 @@ namespace GameLauncher
         {
             // Mettre à jour la valeur de la barre de progression en fonction du pourcentage de progression
             downloadProgressBar.Value = progressPercentage;
+            downloadProgressText.Text = $"{progressPercentage}%";
         }
 
         private async void Window_ContentRendered(object sender, EventArgs e)
@@ -184,8 +192,9 @@ namespace GameLauncher
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
+
             if (File.Exists(gameExe) && Status == LauncherStatus.ready)
-            {
+            {                
                 ProcessStartInfo startInfo = new ProcessStartInfo(gameExe);
                 startInfo.WorkingDirectory = Path.Combine(rootPath, "Build");
                 Process.Start(startInfo);
