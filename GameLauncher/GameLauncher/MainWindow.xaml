@@ -12,6 +12,7 @@
     <Grid>
         <Image Stretch="UniformToFill" HorizontalAlignment="Right"/>
         <TextBlock Name="VersionText" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="20" Foreground="White" Margin="0, 0, 5, 0" />
+        <ProgressBar x:Name="DownloadProgressBar" Width="200" Height="20" Minimum="0" Maximum="100" Value="0" Visibility="Collapsed" />
         <Button Name="PlayButton" Content="Check for Update" Click="PlayButton_Click" Height="60" FontSize="28" FontWeight="Bold" Foreground="#DDFFFF" Margin="0, 0, 0, 15" VerticalAlignment="Bottom" Width="300"/>
     </Grid>
 </Window>
