@@ -1,15 +1,12 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
-using System.Media;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Shapes;
+
 
 namespace GameLauncher
 {
@@ -65,7 +62,6 @@ namespace GameLauncher
         private ProgressBar downloadProgressBar;
         private TextBlock downloadProgressText;
         private HttpClient httpClient;
-        private MediaPlayer mediaPlayer;
 
         private long totalDownloadedBytes = 0L;
         private long totalBytes = 0L;
@@ -232,8 +228,23 @@ namespace GameLauncher
 
         private async void InstallButton_Click(object sender, RoutedEventArgs e)
         {
-            // Appele la méthode CheckForUpdates pour lancer le téléchargement
-            await CheckForUpdates();
+            var dialog = new Microsoft.WindowsAPICodePack.Dialogs.CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
+
+            if (dialog.ShowDialog() == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
+            {
+                // Obtient le dossier sélectionné par l'utilisateur
+                string installationFolder = dialog.FileName;
+
+                // Définit le dossier d'installation du jeu sur le dossier sélectionné par l'utilisateur
+                rootPath = installationFolder;
+                versionFile = System.IO.Path.Combine(rootPath, "Version.txt");
+                gameZip = System.IO.Path.Combine(rootPath, "Build.zip");
+                gameExe = System.IO.Path.Combine(rootPath, "Build", "Card game.exe");
+
+                // Appele la méthode CheckForUpdates pour lancer le téléchargement
+                await CheckForUpdates();
+            }
         }
 
         private void DiscordButton_Click(object sender, RoutedEventArgs e)

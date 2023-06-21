@@ -21,3 +21,6 @@ C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\obj\Debug\net
 C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\obj\Debug\net6.0-windows\ref\GameLauncher.dll
 C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\obj\Debug\net6.0-windows\App.baml
 C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\obj\Debug\net6.0-windows\GameLauncher_Content.g.cs
+C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\bin\Debug\net6.0-windows\Microsoft.WindowsAPICodePack.dll
+C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\bin\Debug\net6.0-windows\Microsoft.WindowsAPICodePack.Shell.dll
+C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\obj\Debug\net6.0-windows\GameLauncher.csproj.CopyComplete
