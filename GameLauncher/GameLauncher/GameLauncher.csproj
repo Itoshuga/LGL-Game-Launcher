@@ -27,4 +27,8 @@
     <Resource Include="Images\LauncherBackground.jpg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Classes\" />
+  </ItemGroup>
+
 </Project>
