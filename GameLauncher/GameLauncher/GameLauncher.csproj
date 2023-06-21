@@ -5,6 +5,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Images\Icones\Logo.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,8 +14,16 @@
     <None Remove="Images\Icones\Home-v2.png" />
     <None Remove="Images\Icones\Home.png" />
     <None Remove="Images\Icones\Note.png" />
+    <None Remove="Images\Icones\Parameters.png" />
     <None Remove="Images\Icones\SignOut.png" />
+    <None Remove="Images\Icones\Web.png" />
     <None Remove="Images\LauncherBackground.jpg" />
+    <None Remove="Images\Logo-White-Min.png" />
+    <None Remove="Images\Logo-white.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\Icones\Logo.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,8 +32,12 @@
     <Resource Include="Images\Icones\Home-v2.png" />
     <Resource Include="Images\Icones\Home.png" />
     <Resource Include="Images\Icones\Note.png" />
+    <Resource Include="Images\Icones\Parameters.png" />
     <Resource Include="Images\Icones\SignOut.png" />
+    <Resource Include="Images\Icones\Web.png" />
     <Resource Include="Images\LauncherBackground.jpg" />
+    <Resource Include="Images\Logo-White-Min.png" />
+    <Resource Include="Images\Logo-white.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -3,10 +3,13 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
+using System.Media;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace GameLauncher
 {
@@ -62,6 +65,7 @@ namespace GameLauncher
         private ProgressBar downloadProgressBar;
         private TextBlock downloadProgressText;
         private HttpClient httpClient;
+        private MediaPlayer mediaPlayer;
 
         private long totalDownloadedBytes = 0L;
         private long totalBytes = 0L;
@@ -71,9 +75,9 @@ namespace GameLauncher
             InitializeComponent();
 
             rootPath = Directory.GetCurrentDirectory();
-            versionFile = Path.Combine(rootPath, "Version.txt");
-            gameZip = Path.Combine(rootPath, "Build.zip");
-            gameExe = Path.Combine(rootPath, "Build", "Card game.exe");
+            versionFile = System.IO.Path.Combine(rootPath, "Version.txt");
+            gameZip = System.IO.Path.Combine(rootPath, "Build.zip");
+            gameExe = System.IO.Path.Combine(rootPath, "Build", "Card game.exe");
 
             downloadProgressBar = DownloadProgressBar;
             downloadProgressText = DownloadProgressText;
@@ -215,7 +219,7 @@ namespace GameLauncher
             if (File.Exists(gameExe) && Status == LauncherStatus.ready)
             {
                 ProcessStartInfo startInfo = new ProcessStartInfo(gameExe);
-                startInfo.WorkingDirectory = Path.Combine(rootPath, "Build");
+                startInfo.WorkingDirectory = System.IO.Path.Combine(rootPath, "Build");
                 Process.Start(startInfo);
 
                 Close();
@@ -243,13 +247,14 @@ namespace GameLauncher
         {
 
             // Ouvre le lien dans le navigateur par défaut
-            Process.Start(new ProcessStartInfo("https://google.com/") { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo("https://card-game-website.vercel.app/") { UseShellExecute = true });
         }
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
+
     }
 
     struct Version

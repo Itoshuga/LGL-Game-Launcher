@@ -40,7 +40,7 @@
                         <Button Style="{StaticResource menuButton}" Click="DiscordButton_Click" >
                             <Image Source="Images/Icones/Discord.png" Width="20"/>
                         </Button>
-                        <Button Style="{StaticResource menuButton}" Click="WebsiteButton_Click" >
+                        <Button Style="{StaticResource menuButton}" Click="WebsiteButton_Click">
                             <Image Source="Images/Icones/Web.png" Width="20"/>
                         </Button>
                         <Button Style="{StaticResource menuButton}">
@@ -77,14 +77,14 @@
                         </Grid.ColumnDefinitions>
 
                         <!-- Titles -->
-                        <StackPanel VerticalAlignment="Top" Margin="60,205,0,0" Grid.RowSpan="2">
-                            <TextBlock Text="Jeu de Cartes" Foreground="#FFFFFF" Background="#907098" Width="auto" Padding="10 5" TextAlignment="Center" HorizontalAlignment="Left"/>
-                            <TextBlock Text="Duel de Règne" Foreground="#FFFFFF" Margin="0 10" FontSize="36" FontWeight="Bold" TextWrapping="Wrap"/>
-                            <TextBlock x:Name="VersionText" Foreground="#FFFFFF"/>
+                        <StackPanel VerticalAlignment="Top" Margin="60,180,0,0" Grid.RowSpan="2">
+                            <Image Source="Images/Logo-White-Min.png" Width="200" HorizontalAlignment="Left"/>
+                            <TextBlock x:Name="VersionText" Margin="0 25 0 5"  Foreground="#FFFFFF"/>
+                            <Button Style="{StaticResource playButton}" x:Name="PlayButton" Content="JOUER" Height="40" Width="200" Foreground="White" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Click="PlayButton_Click"  Visibility="Collapsed"/>
+                            <Button Style="{StaticResource playButton}" x:Name="InstallButton" Content="INSTALLER" Height="40" Width="200" Foreground="White" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Click="InstallButton_Click"/>
                             <TextBlock x:Name="DownloadProgressText" Foreground="#FFFFFF" Text="" Visibility="Collapsed"/>
+
                             <ProgressBar Name="DownloadProgressBar" Width="200" Height="5" Minimum="0" Maximum="100" Value="0" Visibility="Collapsed" HorizontalAlignment="Left" />
-                            <Button Style="{StaticResource playButton}" x:Name="PlayButton" Content="JOUER" Height="40" Width="200" Foreground="White" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="0 30" Click="PlayButton_Click"  Visibility="Collapsed"/>
-                            <Button Style="{StaticResource playButton}" x:Name="InstallButton" Content="INSTALLER" Height="40" Width="200" Foreground="White" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="0 30" Click="InstallButton_Click"/>
                         </StackPanel>
                     </Grid>
 
