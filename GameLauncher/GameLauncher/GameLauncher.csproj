@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Images\BackgroundLauncher-v2.jpg" />
     <None Remove="Images\Icones\Discord.png" />
     <None Remove="Images\Icones\Game.png" />
     <None Remove="Images\Icones\Home-v2.png" />
@@ -27,6 +28,10 @@
     <None Remove="Images\LauncherBackground.jpg" />
     <None Remove="Images\Logo-White-Min.png" />
     <None Remove="Images\Logo-white.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\BackgroundLauncher-v2.jpg" />
   </ItemGroup>
 
   <ItemGroup>

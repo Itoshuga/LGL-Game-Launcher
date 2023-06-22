@@ -4,10 +4,14 @@ using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
+using System.Media;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Input;
+using System.Text;
 
 
 namespace GameLauncher
@@ -77,11 +81,14 @@ namespace GameLauncher
             rootPath = Properties.Settings.Default.PathFolder;
             versionFile = System.IO.Path.Combine(rootPath, "Version.txt");
             gameZip = System.IO.Path.Combine(rootPath, "Build.zip");
-            gameExe = System.IO.Path.Combine(rootPath, "Build", "Card game.exe");
+            gameExe = System.IO.Path.Combine(rootPath, "Build", "Duel de R�gne.exe");
 
             downloadProgressBar = DownloadProgressBar;
             downloadProgressText = DownloadProgressText;
             httpClient = new HttpClient();
+
+            SoundPlayer soundPlayer = new SoundPlayer("C:\\Users\\wagas\\Desktop\\LGL-Game-Launcher\\GameLauncher\\GameLauncher\\Sons\\Loop.wav");
+            soundPlayer.PlayLooping();
         }
 
         private async Task CheckForUpdates()
@@ -211,6 +218,9 @@ namespace GameLauncher
             // Vérifie si le fichier du jeu existe
             if (File.Exists(gameExe))
             {
+                PlayButton.Visibility = Visibility.Visible;
+                InstallButton.Visibility = Visibility.Collapsed;
+
                 // On vérifie que le jeu est à jour
                 await CheckForUpdates();
             }
@@ -251,7 +261,7 @@ namespace GameLauncher
 
                 versionFile = System.IO.Path.Combine(installationFolder, "Version.txt");
                 gameZip = System.IO.Path.Combine(installationFolder, "Build.zip");
-                gameExe = System.IO.Path.Combine(installationFolder, "Build", "Card game.exe");
+                gameExe = System.IO.Path.Combine(installationFolder, "Build", "Duel de R�gne.exe");
 
                 // Appele la méthode CheckForUpdates pour lancer le téléchargement
                 await CheckForUpdates();
@@ -276,6 +286,38 @@ namespace GameLauncher
         {
             Close();
         }
+
+        private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            // Si on maintiens le clique gauche sur la fenêtre
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                // Alors on peut la déplacer
+                this.DragMove();
+            }
+        }
+
+        bool isMaximized = false;
+
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 2)
+            {
+                if (isMaximized)
+                {
+                    this.WindowState = WindowState.Normal;
+                    this.Width = 1080;
+                    this.Height = 680;
+
+                    isMaximized = false;
+                } else {
+                    this.WindowState = WindowState.Maximized;
+
+                    isMaximized = true;
+                }
+            } 
+        }
+
 
     }
 
