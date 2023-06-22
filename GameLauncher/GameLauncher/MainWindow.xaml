@@ -169,7 +169,7 @@
                     <Grid>
                         <!-- Titles -->
                         <StackPanel VerticalAlignment="Center" Margin="60, 0, 0, 0" Grid.RowSpan="2">
-                            <Image Source="Images/Logo-White-Min.png" Width="200" HorizontalAlignment="Left"/>
+                            <Image Source="Images/Logo-White.png" Width="200" HorizontalAlignment="Left"/>
                             <TextBlock x:Name="VersionText" Margin="0 25 0 5"  Foreground="#FFFFFF"/>
                             <Button Style="{StaticResource playButton}" x:Name="PlayButton" Content="JOUER" Height="40" Width="200" Foreground="White" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Click="PlayButton_Click"  Visibility="Collapsed"/>
                             <Button Style="{StaticResource playButton}" x:Name="InstallButton" Content="INSTALLER" Height="40" Width="200" Foreground="White" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Click="InstallButton_Click"/>
@@ -201,8 +201,8 @@
                         </Grid.ColumnDefinitions>
 
                         <!-- Titles -->
-                        <StackPanel VerticalAlignment="Top" Grid.RowSpan="2">
-                            <TextBlock Text="test" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <StackPanel VerticalAlignment="Center" Grid.RowSpan="2">
+                            <TextBlock Text="Nouveauté et Patch" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Grid>
 

@@ -1,6 +1,5 @@
 ﻿using GameLauncher.Properties;
 using System;
-using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
@@ -9,9 +8,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Input;
-using System.Text;
 
 
 namespace GameLauncher
@@ -87,7 +84,7 @@ namespace GameLauncher
             downloadProgressText = DownloadProgressText;
             httpClient = new HttpClient();
 
-            SoundPlayer soundPlayer = new SoundPlayer("C:\\Users\\wagas\\Desktop\\LGL-Game-Launcher\\GameLauncher\\GameLauncher\\Sons\\Loop.wav");
+            SoundPlayer soundPlayer = new SoundPlayer("../../../Sons/Loop.wav");
             soundPlayer.PlayLooping();
         }
 

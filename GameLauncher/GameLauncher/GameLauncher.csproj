@@ -9,13 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Classes\**" />
-    <EmbeddedResource Remove="Classes\**" />
-    <None Remove="Classes\**" />
-    <Page Remove="Classes\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="Images\BackgroundLauncher-v2.jpg" />
     <None Remove="Images\Icones\Discord.png" />
     <None Remove="Images\Icones\Game.png" />
@@ -27,7 +20,7 @@
     <None Remove="Images\Icones\Web.png" />
     <None Remove="Images\LauncherBackground.jpg" />
     <None Remove="Images\Logo-White-Min.png" />
-    <None Remove="Images\Logo-white.png" />
+    <None Remove="Images\Logo-White.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -49,7 +42,7 @@
     <Resource Include="Images\Icones\Web.png" />
     <Resource Include="Images\LauncherBackground.jpg" />
     <Resource Include="Images\Logo-White-Min.png" />
-    <Resource Include="Images\Logo-white.png" />
+    <Resource Include="Images\Logo-White.png" />
   </ItemGroup>
 
   <ItemGroup>
