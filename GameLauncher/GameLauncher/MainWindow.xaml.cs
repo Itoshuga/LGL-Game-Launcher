@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GameLauncher.Properties;
+using System;
+using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
@@ -45,6 +47,7 @@ namespace GameLauncher
                         break;
                     case LauncherStatus.failed:
                         PlayButton.Content = "ECHEC";
+                        InstallButton.Content = "ECHEC";
                         break;
                     case LauncherStatus.downloadingGame:
                         PlayButton.Content = "TELECHARGEMENT";
@@ -52,6 +55,7 @@ namespace GameLauncher
                         break;
                     case LauncherStatus.downloadingUpdate:
                         PlayButton.Content = "MISE A JOUR";
+                        InstallButton.Content = "MISE A JOUR";
                         break;
                     default:
                         break;
@@ -70,7 +74,7 @@ namespace GameLauncher
         {
             InitializeComponent();
 
-            rootPath = Directory.GetCurrentDirectory();
+            rootPath = Properties.Settings.Default.PathFolder;
             versionFile = System.IO.Path.Combine(rootPath, "Version.txt");
             gameZip = System.IO.Path.Combine(rootPath, "Build.zip");
             gameExe = System.IO.Path.Combine(rootPath, "Build", "Card game.exe");
@@ -108,6 +112,7 @@ namespace GameLauncher
                 {
                     Status = LauncherStatus.failed;
                     MessageBox.Show($"Error checking for game updates: {ex}");
+                    totalDownloadedBytes = 0;
                 }
             }
             else
@@ -149,6 +154,8 @@ namespace GameLauncher
             {
                 Status = LauncherStatus.failed;
                 MessageBox.Show($"Error installing game files: {ex}");
+                totalDownloadedBytes = 0;
+
             }
         }
 
@@ -237,10 +244,14 @@ namespace GameLauncher
                 string installationFolder = dialog.FileName;
 
                 // Définit le dossier d'installation du jeu sur le dossier sélectionné par l'utilisateur
-                rootPath = installationFolder;
-                versionFile = System.IO.Path.Combine(rootPath, "Version.txt");
-                gameZip = System.IO.Path.Combine(rootPath, "Build.zip");
-                gameExe = System.IO.Path.Combine(rootPath, "Build", "Card game.exe");
+                Properties.Settings.Default.PathFolder = installationFolder;
+
+                // Stocke la valeur dans les paramètres de l'application
+                Properties.Settings.Default.Save();
+
+                versionFile = System.IO.Path.Combine(installationFolder, "Version.txt");
+                gameZip = System.IO.Path.Combine(installationFolder, "Build.zip");
+                gameExe = System.IO.Path.Combine(installationFolder, "Build", "Card game.exe");
 
                 // Appele la méthode CheckForUpdates pour lancer le téléchargement
                 await CheckForUpdates();
