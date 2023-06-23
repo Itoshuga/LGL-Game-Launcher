@@ -78,7 +78,7 @@ namespace GameLauncher
             rootPath = Properties.Settings.Default.PathFolder;
             versionFile = System.IO.Path.Combine(rootPath, "Version.txt");
             gameZip = System.IO.Path.Combine(rootPath, "Build.zip");
-            gameExe = System.IO.Path.Combine(rootPath, "Build", "Duel de R�gne.exe");
+            gameExe = System.IO.Path.Combine(rootPath, "Build", "Duel of Reigns.exe");
 
             downloadProgressBar = DownloadProgressBar;
             downloadProgressText = DownloadProgressText;
@@ -258,7 +258,7 @@ namespace GameLauncher
 
                 versionFile = System.IO.Path.Combine(installationFolder, "Version.txt");
                 gameZip = System.IO.Path.Combine(installationFolder, "Build.zip");
-                gameExe = System.IO.Path.Combine(installationFolder, "Build", "Duel de R�gne.exe");
+                gameExe = System.IO.Path.Combine(installationFolder, "Build", "Duel of Reigns.exe");
 
                 // Appele la méthode CheckForUpdates pour lancer le téléchargement
                 await CheckForUpdates();

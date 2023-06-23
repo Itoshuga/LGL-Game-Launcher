@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:uc="clr-namespace:GameLauncher.UserControls"
         xmlns:local="clr-namespace:GameLauncher"
         mc:Ignorable="d"
         WindowStyle="None"
@@ -192,8 +193,7 @@
                 <Border CornerRadius="25" Background="GhostWhite">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="227*"/>
-                            <RowDefinition Height="393*"/>
+                            <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -201,9 +201,29 @@
                         </Grid.ColumnDefinitions>
 
                         <!-- Titles -->
-                        <StackPanel VerticalAlignment="Center" Grid.RowSpan="2">
-                            <TextBlock Text="Nouveauté et Patch" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </StackPanel>
+                        <Grid>
+                            <TextBlock Text="Nouveauté et Patch" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                            <Border CornerRadius="25" Grid.Column="1">
+                                <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                                    <Border Padding="30">
+                                        <StackPanel VerticalAlignment="Center">
+                                            <uc:PatchCard Etiquette="Nouveauté"
+                                                          Titre="Présentation du mode Solo"
+                                                          Description="Venez tester notre jeu contre une IA afin de nous donner des retours et des pistes d'amélioration "
+                                                          ImagePath="https://card-game-website.vercel.app/assets/thumb_elf-27def90d.jpg"/>
+                                            <uc:PatchCard Etiquette="Patch"
+                                                          Titre="Mise à Jour 1.0.1"
+                                                          Description="Le premier patch de mise à jour pour Duel de Règne est enfin là ! Cette mise à jour apporte de nouvelles fonctionnalités passionnantes et des améliorations significatives pour une expérience de jeu encore plus immersive."
+                                                          ImagePath="https://i.imgur.com/VtrFiCG.jpg"/>
+                                            <uc:PatchCard Etiquette="Réel"
+                                                          Titre="Sortie du Jeu sur Plateau."
+                                                          Description="Duel of Reigns: la version plateau du jeu de stratégie épique est enfin disponible ! Plongez dans un univers captivant où vous pouvez rivaliser avec vos amis et votre famille pour conquérir le trône."
+                                                          ImagePath="./Images/BackgroundLauncher-v2.jpg"/>
+                                        </StackPanel>
+                                    </Border>
+                                </ScrollViewer>
+                            </Border>
+                        </Grid>
                     </Grid>
 
                 </Border>
