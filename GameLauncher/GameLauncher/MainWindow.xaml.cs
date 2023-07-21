@@ -1,5 +1,8 @@
-﻿using GameLauncher.Properties;
+﻿using GameLauncher.Classes;
+using GameLauncher.Properties;
+using GameLauncher.UserControls;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
@@ -74,6 +77,8 @@ namespace GameLauncher
         public MainWindow()
         {
             InitializeComponent();
+            cFirestoreHelper.SetEnvironmentVariable();
+            LoadNews();
 
             rootPath = Properties.Settings.Default.PathFolder;
             versionFile = System.IO.Path.Combine(rootPath, "Version.txt");
@@ -84,8 +89,15 @@ namespace GameLauncher
             downloadProgressText = DownloadProgressText;
             httpClient = new HttpClient();
 
-            SoundPlayer soundPlayer = new SoundPlayer("../../../Sons/Loop.wav");
-            soundPlayer.PlayLooping();
+            try
+            {
+                SoundPlayer soundPlayer = new SoundPlayer("../../../Sons/Loop.wav");
+                soundPlayer.PlayLooping();
+            } catch (Exception Ex)
+            {
+                Console.WriteLine(Ex);
+            }
+            
         }
 
         private async Task CheckForUpdates()
@@ -315,7 +327,28 @@ namespace GameLauncher
             } 
         }
 
+        private async void LoadNews()
+        {
+            List<cNews> newsList = await cNews.GetPublishedNews();
 
+            // Effacer le contenu actuel de la StackPanel (au cas où il y en aurait déjà)
+            NewsContainer.Children.Clear();
+
+            // Créer des PatchCard à partir des actualités et les ajouter à actualitesContainer
+            foreach (cNews news in newsList)
+            {
+                PatchCard patchCard = new PatchCard
+                {
+                    Etiquette = news.tag,
+                    Titre = news.title,
+                    Description = news.content,
+                    ImagePath = news.image
+                };
+                NewsContainer.Children.Add(patchCard);
+            }
+
+            cNews.GetPublishedNews();
+        }
     }
 
     struct Version

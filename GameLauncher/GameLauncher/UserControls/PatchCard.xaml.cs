@@ -52,13 +52,13 @@ namespace GameLauncher.UserControls
         public static readonly DependencyProperty DescriptionProperty =
             DependencyProperty.Register("Description", typeof(string), typeof(PatchCard));
 
-        public ImageSource ImagePath
+        public string ImagePath
         {
-            get { return (ImageSource)GetValue(ImagePathProperty); }
+            get { return (string)GetValue(ImagePathProperty); }
             set { SetValue(ImagePathProperty, value); }
         }
 
         public static readonly DependencyProperty ImagePathProperty =
-            DependencyProperty.Register("ImagePath", typeof(ImageSource), typeof(PatchCard));
+            DependencyProperty.Register("string", typeof(string), typeof(PatchCard));
     }
 }

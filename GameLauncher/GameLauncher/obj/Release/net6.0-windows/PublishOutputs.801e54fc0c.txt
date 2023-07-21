@@ -1,0 +1,8 @@
+C:\Users\wagas\Desktop\po\GameLauncher.exe
+C:\Users\wagas\Desktop\po\GameLauncher.dll
+C:\Users\wagas\Desktop\po\GameLauncher.deps.json
+C:\Users\wagas\Desktop\po\GameLauncher.runtimeconfig.json
+C:\Users\wagas\Desktop\po\GameLauncher.dll.config
+C:\Users\wagas\Desktop\po\GameLauncher.pdb
+C:\Users\wagas\Desktop\po\Microsoft.WindowsAPICodePack.dll
+C:\Users\wagas\Desktop\po\Microsoft.WindowsAPICodePack.Shell.dll

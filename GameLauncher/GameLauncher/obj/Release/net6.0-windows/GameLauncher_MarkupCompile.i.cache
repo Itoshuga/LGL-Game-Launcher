@@ -10,11 +10,11 @@ none
 false
 TRACE;RELEASE;NET;NET6_0;NETCOREAPP
 C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\App.xaml
-11407045341
+21451339618
 1168721339
-6-141083035
+7-1516183982
 196518647783
-MainWindow.xaml;
+MainWindow.xaml;UserControls\PatchCard.xaml;
 
 True
 

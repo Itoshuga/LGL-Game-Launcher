@@ -25,3 +25,6 @@ C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\obj\Release\n
 C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\obj\Release\net6.0-windows\GameLauncher.pdb
 C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\obj\Release\net6.0-windows\GameLauncher.genruntimeconfig.cache
 C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\obj\Release\net6.0-windows\ref\GameLauncher.dll
+C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\obj\Release\net6.0-windows\UserControls\PatchCard.g.cs
+C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\obj\Release\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\obj\Release\net6.0-windows\UserControls\PatchCard.baml

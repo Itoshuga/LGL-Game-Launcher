@@ -206,7 +206,7 @@
                             <Border CornerRadius="25" Grid.Column="1">
                                 <ScrollViewer VerticalScrollBarVisibility="Hidden">
                                     <Border Padding="30">
-                                        <StackPanel VerticalAlignment="Center">
+                                        <StackPanel x:Name="NewsContainer" VerticalAlignment="Center">
                                             <uc:PatchCard Etiquette="Nouveauté"
                                                           Titre="Présentation du mode Solo"
                                                           Description="Venez tester notre jeu contre une IA afin de nous donner des retours et des pistes d'amélioration "

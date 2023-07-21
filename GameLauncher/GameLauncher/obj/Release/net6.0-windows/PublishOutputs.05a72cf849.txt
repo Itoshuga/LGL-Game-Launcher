@@ -1,0 +1,8 @@
+C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\bin\Release\net6.0-windows\publish\GameLauncher.exe
+C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\bin\Release\net6.0-windows\publish\GameLauncher.dll
+C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\bin\Release\net6.0-windows\publish\GameLauncher.deps.json
+C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\bin\Release\net6.0-windows\publish\GameLauncher.runtimeconfig.json
+C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\bin\Release\net6.0-windows\publish\GameLauncher.dll.config
+C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\bin\Release\net6.0-windows\publish\GameLauncher.pdb
+C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\bin\Release\net6.0-windows\publish\Microsoft.WindowsAPICodePack.dll
+C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\bin\Release\net6.0-windows\publish\Microsoft.WindowsAPICodePack.Shell.dll

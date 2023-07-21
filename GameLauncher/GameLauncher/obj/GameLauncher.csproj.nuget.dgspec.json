@@ -40,6 +40,14 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "dependencies": {
+            "DotNetEnv": {
+              "target": "Package",
+              "version": "[2.5.0, )"
+            },
+            "Google.Cloud.Firestore": {
+              "target": "Package",
+              "version": "[3.3.0, )"
+            },
             "WindowsAPICodePack-Shell": {
               "target": "Package",
               "version": "[1.1.1, )"
