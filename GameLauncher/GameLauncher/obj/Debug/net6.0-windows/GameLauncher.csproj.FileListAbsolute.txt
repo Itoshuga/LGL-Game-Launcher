@@ -54,3 +54,5 @@ C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\bin\Debug\net
 C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
 C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\bin\Debug\net6.0-windows\Microsoft.Extensions.Primitives.dll
 C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\bin\Debug\net6.0-windows\Sprache.dll
+C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\obj\Debug\net6.0-windows\Interop.IWshRuntimeLibrary.dll
+C:\Users\wagas\Desktop\LGL-Game-Launcher\GameLauncher\GameLauncher\obj\Debug\net6.0-windows\GameLauncher.csproj.ResolveComReference.cache
