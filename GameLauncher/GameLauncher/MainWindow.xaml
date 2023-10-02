@@ -3,15 +3,257 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:uc="clr-namespace:GameLauncher.UserControls"
         xmlns:local="clr-namespace:GameLauncher"
         mc:Ignorable="d"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
+        Background="Transparent"
         ContentRendered="Window_ContentRendered"
-        Title="LGL Launcher" Height="576" Width="1080">
-    <Grid>
-        <Image Stretch="UniformToFill" HorizontalAlignment="Right"/>
-        <TextBlock Name="VersionText" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="20" Foreground="White" Margin="0, 0, 5, 0" />
-        <Button Name="PlayButton" Content="Check for Update" Click="PlayButton_Click" Height="60" FontSize="28" FontWeight="Bold" Foreground="#DDFFFF" Margin="0, 0, 0, 15" VerticalAlignment="Bottom" Width="300"/>
-    </Grid>
+        AllowsTransparency="True"
+        Height="680" 
+        Width="1080"
+        Title="LGL Launcher"
+        x:Name="Window">
+    <Border Background="#FFFFFF" Padding="30" CornerRadius="25" MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Menu -->
+            <Border CornerRadius="10" Background="#907098">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="1" BlurRadius="20" Opacity="0.4"/>
+                </Border.Effect>
+
+                <Grid>
+                    <StackPanel>
+                        <Button Style="{StaticResource menuButton}" Margin="15 40 15 20" Background="#FFFFFF">
+                            <Button.Triggers>
+                                <EventTrigger RoutedEvent="Button.Click">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="PageOne"
+                                                             Storyboard.TargetProperty="(Border.RenderTransform).(TranslateTransform.Y)"
+                                                             To="0"
+                                                             Duration="0:0:0.5"/>
+                                            <DoubleAnimation Storyboard.TargetName="PageTwo"
+                                                             Storyboard.TargetProperty="(Border.RenderTransform).(TranslateTransform.Y)"
+                                                             To="{Binding ElementName=Window,Path=ActualHeight}"
+                                                             Duration="0:0:0.3"/>
+                                            <DoubleAnimation Storyboard.TargetName="PageThree"
+                                                             Storyboard.TargetProperty="(Border.RenderTransform).(TranslateTransform.Y)"
+                                                             To="{Binding ElementName=Window,Path=ActualHeight}"
+                                                             Duration="0:0:0.3"/>
+                                            
+                                            <DoubleAnimation Storyboard.TargetName="PageOne"
+                                                             Storyboard.TargetProperty="(Opacity)"
+                                                             To="1.0"
+                                                             Duration="0:0:0.5"/>
+                                            <DoubleAnimation Storyboard.TargetName="PageTwo"
+                                                             Storyboard.TargetProperty="(Opacity)"
+                                                             To="0.0"
+                                                             Duration="0:0:0.5"/>
+                                            <DoubleAnimation Storyboard.TargetName="PageThree"
+                                                             Storyboard.TargetProperty="(Opacity)"
+                                                             To="0.0"
+                                                             Duration="0:0:0.5"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Button.Triggers>
+                            <Image Source="Images/Icones/Home-v2.png" Width="20"/>
+                        </Button>
+                        <Button Style="{StaticResource menuButton}">
+                            <Button.Triggers>
+                                <EventTrigger RoutedEvent="Button.Click">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="PageOne"
+                                                             Storyboard.TargetProperty="(Border.RenderTransform).(TranslateTransform.Y)"
+                                                             To="{Binding ElementName=Window,Path=ActualHeight}"
+                                                             Duration="0:0:0.3"/>
+                                            <DoubleAnimation Storyboard.TargetName="PageTwo"
+                                                             Storyboard.TargetProperty="(Border.RenderTransform).(TranslateTransform.Y)"
+                                                             To="0"
+                                                             Duration="0:0:0.5"/>
+                                            <DoubleAnimation Storyboard.TargetName="PageThree"
+                                                             Storyboard.TargetProperty="(Border.RenderTransform).(TranslateTransform.Y)"
+                                                             To="{Binding ElementName=Window,Path=ActualHeight}"
+                                                             Duration="0:0:0.3"/>
+
+                                            <DoubleAnimation Storyboard.TargetName="PageOne"
+                                                             Storyboard.TargetProperty="(Opacity)"
+                                                             To="0.0"
+                                                             Duration="0:0:0.5"/>
+                                            <DoubleAnimation Storyboard.TargetName="PageTwo"
+                                                             Storyboard.TargetProperty="(Opacity)"
+                                                             To="1.0"
+                                                             Duration="0:0:0.5"/>
+                                            <DoubleAnimation Storyboard.TargetName="PageThree"
+                                                             Storyboard.TargetProperty="(Opacity)"
+                                                             To="0.0"
+                                                             Duration="0:0:0.5"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Button.Triggers>
+                            <Image Source="Images/Icones/Note.png" Width="20"/>
+                        </Button>
+                        <Button Style="{StaticResource menuButton}">
+                            <Button.Triggers>
+                                <EventTrigger RoutedEvent="Button.Click">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="PageOne"
+                                                             Storyboard.TargetProperty="(Border.RenderTransform).(TranslateTransform.Y)"
+                                                             To="{Binding ElementName=Window,Path=ActualHeight}"
+                                                             Duration="0:0:0.3"/>
+                                            <DoubleAnimation Storyboard.TargetName="PageTwo"
+                                                             Storyboard.TargetProperty="(Border.RenderTransform).(TranslateTransform.Y)"
+                                                             To="{Binding ElementName=Window,Path=ActualHeight}"
+                                                             Duration="0:0:0.3"/>
+                                            <DoubleAnimation Storyboard.TargetName="PageThree"
+                                                             Storyboard.TargetProperty="(Border.RenderTransform).(TranslateTransform.Y)"
+                                                             To="0"
+                                                             Duration="0:0:0.5"/>
+
+                                            <DoubleAnimation Storyboard.TargetName="PageOne"
+                                                             Storyboard.TargetProperty="(Opacity)"
+                                                             To="0.0"
+                                                             Duration="0:0:0.5"/>
+                                            <DoubleAnimation Storyboard.TargetName="PageTwo"
+                                                             Storyboard.TargetProperty="(Opacity)"
+                                                             To="0.0"
+                                                             Duration="0:0:0.5"/>
+                                            <DoubleAnimation Storyboard.TargetName="PageThree"
+                                                             Storyboard.TargetProperty="(Opacity)"
+                                                             To="1.0"
+                                                             Duration="0:0:0.0"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Button.Triggers>
+                            <Image Source="Images/Icones/Parameters.png" Width="20"/>
+                        </Button>
+                        
+                    </StackPanel>
+
+                    <StackPanel VerticalAlignment="Bottom">
+                        <Button Style="{StaticResource menuButton}" Click="DiscordButton_Click" >
+                            <Image Source="Images/Icones/Discord.png" Width="20"/>
+                        </Button>
+                        <Button Style="{StaticResource menuButton}" Click="WebsiteButton_Click">
+                            <Image Source="Images/Icones/Web.png" Width="20"/>
+                        </Button>
+                        <Button x:Name="LogOutButton" Style="{StaticResource menuButton}" Margin="15 0 15 20"  Click="LogOutButton_Click">
+                            <Image Source="Images/Icones/SignOut.png" Width="20"/>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+
+            </Border>
+
+            <!-- Page 1 -->
+            <Border x:Name="PageOne" Style="{StaticResource borderPage}">
+                <Border.RenderTransform>
+                    <TranslateTransform Y="0"/>
+                </Border.RenderTransform>
+
+                <Border CornerRadius="25">
+                    <Border.Background>
+                        <ImageBrush Stretch="Fill" Opacity="0.6" ImageSource="Images/BackgroundLauncher-v2.jpg"/>
+                    </Border.Background>
+
+                    <Grid>
+                        <!-- Titles -->
+                        <StackPanel VerticalAlignment="Center" Margin="60, 0, 0, 0" Grid.RowSpan="2">
+                            <Image Source="Images/Logo-White.png" Width="200" HorizontalAlignment="Left"/>
+                            <TextBlock x:Name="VersionText" Margin="0 25 0 5"  Foreground="#FFFFFF"/>
+                            <Button Style="{StaticResource playButton}" x:Name="PlayButton" Content="JOUER" Height="40" Width="200" Foreground="White" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Click="PlayButton_Click"  Visibility="Collapsed"/>
+                            <Button Style="{StaticResource playButton}" x:Name="InstallButton" Content="INSTALLER" Height="40" Width="200" Foreground="White" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Click="InstallButton_Click"/>
+                            <TextBlock x:Name="DownloadProgressText" Foreground="#FFFFFF" Text="" Visibility="Collapsed"/>
+
+                            <ProgressBar Name="DownloadProgressBar" Width="200" Height="5" Minimum="0" Maximum="100" Value="0" Visibility="Collapsed" HorizontalAlignment="Left" />
+                        </StackPanel>
+                    </Grid>
+
+                </Border>
+            </Border>
+
+
+             <!-- Page 2 -->
+            <Border x:Name="PageTwo" Style="{StaticResource borderPage}">
+                <Border.RenderTransform>
+                    <TranslateTransform Y="{Binding ElementName=Window, Path=ActualHeight}"/>
+                </Border.RenderTransform>
+
+                <Border CornerRadius="25" Background="GhostWhite">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Titles -->
+                        <Grid>
+                            <TextBlock Text="Nouveauté et Patch" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                            <Border CornerRadius="25" Grid.Column="1">
+                                <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                                    <Border Padding="30">
+                                        <StackPanel x:Name="NewsContainer" VerticalAlignment="Center">
+                                            <uc:PatchCard Etiquette="Nouveauté"
+                                                          Titre="Présentation du mode Solo"
+                                                          Description="Venez tester notre jeu contre une IA afin de nous donner des retours et des pistes d'amélioration "
+                                                          ImagePath="https://card-game-website.vercel.app/assets/thumb_elf-27def90d.jpg"/>
+                                            <uc:PatchCard Etiquette="Patch"
+                                                          Titre="Mise à Jour 1.0.1"
+                                                          Description="Le premier patch de mise à jour pour Duel de Règne est enfin là ! Cette mise à jour apporte de nouvelles fonctionnalités passionnantes et des améliorations significatives pour une expérience de jeu encore plus immersive."
+                                                          ImagePath="https://i.imgur.com/VtrFiCG.jpg"/>
+                                            <uc:PatchCard Etiquette="Réel"
+                                                          Titre="Sortie du Jeu sur Plateau."
+                                                          Description="Duel of Reigns: la version plateau du jeu de stratégie épique est enfin disponible ! Plongez dans un univers captivant où vous pouvez rivaliser avec vos amis et votre famille pour conquérir le trône."
+                                                          ImagePath="./Images/BackgroundLauncher-v2.jpg"/>
+                                        </StackPanel>
+                                    </Border>
+                                </ScrollViewer>
+                            </Border>
+                        </Grid>
+                    </Grid>
+
+                </Border>
+            </Border>
+
+            <!-- Page 3 -->
+            <Border x:Name="PageThree" Style="{StaticResource borderPage}">
+                <Border.RenderTransform>
+                    <TranslateTransform Y="{Binding ElementName=Window, Path=ActualHeight}"/>
+                </Border.RenderTransform>
+
+                <Border CornerRadius="25" Background="GhostWhite">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="227*"/>
+                            <RowDefinition Height="393*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Titles -->
+                        <StackPanel VerticalAlignment="Center" Grid.RowSpan="2">
+                            <TextBlock Text="Options" Foreground="Black" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+
+                </Border>
+            </Border>
+        </Grid>
+    </Border>
 </Window>
